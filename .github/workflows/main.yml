@@ -172,7 +172,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
-        key: ${{ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCg2aUbllz5/7X1ijfO5Do/f+/xDmQsAHSFFEFNN6x0tWQuKDGmkiRUg+7ZtfUp5yE54T98nyndwS2jFaaY4TEGBSyU0/IE9v2bkkDxygsyLfcuUMlgmcTCC7eRsThf9pXQ4qqiji9jLFLBDmDpIRzaFV53Km8Ipf7AvlD5pCAsS+KOoeaVGWVz2MmbTSNha2w8bzhYDAw0OmOau9hlUcp75BiFtZO7F6WugxAYKFZAD6OzBQcrccCFb6+aGIkvCdAR3ctvQgtMpxYAJexrW7dKt6bPiX/JQpx10yk+jPpgL5VjFFG4Np0wFIUi1sEe8c2Zonl3VMTrh2319lEl259yXt8Ec3IAlrCgKjv7oV0HUbLlFPZTgbxYvRQEoucYH3BcqW3nfvGBt5VwRbKBKSnpYGWy3p2anAtoeZVryXsckBlIPWe0G98O1Zz/FqEQhjOZLNb8l5vvK6IOg89V9TCWFoBMZN3/SoCU/JCcMKDp6ieiL3+WCdqogTFEsl5UH3k= yc-user@epdn77hbevcubj67p8ol }}
+        key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         source: "docker-compose.production.yml"
         target: "taski"
@@ -197,3 +197,4 @@ jobs:
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
           sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
+          
